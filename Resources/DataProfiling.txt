@@ -1,0 +1,598 @@
+__________________________________________________________________________________________
+orders data (query)
+
+(1) order_id <<<<<
+
+-values count is 32313 and distinct value is 32313 there is no depliucated values 
+-zero errors zero empty
+
+final notes
+-one to many relation with order item and order item refund 
+-the core of the star 
+-the volume of the orders 32k
+
+(2) websites_session_id <<<<<
+
+-values count is 32313 and distinct value is 32313 there is no depliucated values 
+-zero errors zero empty
+
+final notes
+-one to many relation with wesite pahe views and website sessions
+-the volume of the orders 32k
+
+(3)user_id <<<<
+
+-values count is 32313 and distinct value is 31696 and unique value is 31105
+-zero errors zero empty
+
+final notes
+
+31k customer order one time
+1 k customer order two time
+
+(4)primary_product_id
+-values count is 32313 and distinct value is 4 
+-zero errors zero empty
+
+-product 1 = 23861
+-product 2 = 4803
+-product 3 = 3068
+-product 4 = 581 
+
+final note
+-one hero product
+
+(5)created_at_date
+-values count is 32313 and distinct value is 1092 and unique value is 13
+-zero errors zero empty
+
+-first order date is 19/03/2012
+-last order date is 19/03/2015
+
+(6)created_at_time
+-values count is 32313 and distinct hour value is 24 and unique value is  0 
+-zero errors zero empty
+-standard deviation 5.76141
+-average 13
+
+ peak hour sorted
+11	2194
+15	2188
+12	2172
+14	2153
+16	2099
+13	2085
+10	1948
+17	1922
+9	1661
+18	1593
+19	1378
+21	1192
+20	1189
+8	1149
+22	1131
+23	1028
+0	823
+7	756
+1	721
+6	684
+2	586
+5	566
+4	549
+3	546
+
+(7)item_purchase
+
+-values count is 32313 and distinct value is 2 
+-zero errors zero empty
+
+Min	1
+Max	2
+Average	1.238665553
+Standard deviation	0.426274477319999
+
+ number of items purchased
+1	24601 
+2	7712
+
+
+(8)price_usd
+
+-values count is 32313 and distinct value is 10 
+-zero errors zero empty
+
+Min	29.99
+Max	109.98
+Average	59.99163649
+Standard deviation	17.8087710472985
+
+top price usd 
+
+49.99	18104
+59.99	3924
+79.98	3142
+45.99	2039
+95.98	2036
+109.98	944
+89.98	680
+75.98	662
+29.99	534
+105.98	248
+
+(9)cogs_usd
+-values count is 32313 and distinct value is 10 
+-zero errors zero empty
+Min	9.49
+Max	41.98
+Average	22.35540649
+Standard deviation	6.23862055892689
+
+top cogs usd 
+19.49	18104
+22.49	3924
+28.98	3142
+14.49	2039
+33.98	2036
+41.98	944
+31.98	680
+23.98	662
+9.49	534
+36.98	248
+
+__________________________________________________________________________________________
+
+order_items data (query)
+
+(1) order_id
+
+-values count is 40025 and distinct value is 32313 and unique values is 24601
+-zero errors zero empty
+
+order_id!orders ------> order_id!order_items
+       one         to           many          relation 
+
+final note
+-the table or the data ( order_items) for items sold in every order so 
+order id may be repeated 
+
+(2) order_item_id
+-values count is 40025 and distinct value is 40025 and unique values is 40025 
+-zero errors zero empty
+
+
+order_items!order_item_id------> order_item_id!order_items_refunds
+       one         to           many          relation 
+
+
+(3) product_id 
+-values count is 40025 and distinct value is 4 and unique values is 0
+-zero errors zero empty
+
+1	24226
+2	5796
+4	5018
+3	4985
+
+(4)is_primary_irem
+-values count is 40025 and distinct value is 2 and unique values is 0
+-zero errors zero empty
+ 
+1	32313
+0	7712
+
+final note 
+-logical column
+
+(5)price_usd
+-values count is 40025 and distinct value is 4
+-zero errors zero empty
+
+Min	29.99
+Max	59.99
+Average	48.43247345
+Standard deviation	8.01237018818909
+
+
+49.99	24226
+59.99	5796
+29.99	5018
+45.99	4985
+
+
+(6)cogs_usd
+-values count is 40025 and distinct value is 4
+-zero errors zero empty
+
+Min	9.49
+Max	22.49
+Average	18.04797626
+Standard deviation	3.85682095270439
+_______________________________________________________________________________________________
+
+
+order_items_refunds data (query)
+
+(1)order_id
+
+-values count is 1731 and distinct value is 1723 and unique values is 1715
+-zero errors zero empty
+
+final notes
+-8 orders 2 items 
+
+order_id!orders ------> order_id!order_items_refunds
+       one         to           many          relation 
+
+(2)order_item_id
+-values count is 1731 and distinct value is 1731 and unique values is 1731 
+-zero errors zero empty
+
+order__item_id!order_items ------> order__item_id!order_items_refunds
+       one         to           one          relation 
+
+
+(3)order_item_refund_id
+-values count is 1731 and distinct value is 1731 and unique values is 1731 
+-zero errors zero empty
+
+(4)created_at_date
+-values count is 1731 and distinct value is 750 and unique values is 323
+-zero errors zero empty
+
+Min	06/04/2012
+Max	01/04/2015
+
+(5)created_at_time_hour
+-values count is 1731 and distinct value is 24
+-zero errors zero empty
+
+19	92
+2	88
+18	85
+3	85
+13	83
+17	80
+20	79
+9	79
+14	78
+21	75
+22	71
+4	71
+0	70
+1	66
+15	66
+12	66
+7	65
+8	65
+10	64
+16	63
+11	62
+6	61
+5	59
+23	58
+
+(6)refund_amount_usd
+-values count is 1731 and distinct value is 4
+-zero errors zero empty
+
+49.99	1237
+45.99	301
+59.99	129
+29.99	64
+
+________________________________________________________________________________
+
+products data (query)
+
+(1)product_id
+  4 products
+
+(2)created_at_date
+  products added date
+
+(3)product_name
+The Original Mr. Fuzzy
+The Forever Love Bear
+The Birthday Sugar Panda
+The Hudson River Mini Bear
+
+___________________________________________________________________________________
+
+website_pageviews data (query)
+
+(1)website_session_id
+
+-values count is 1188124 and distinct value is 472871 and unique values is 211640
+-zero errors zero empty
+
+
+website_session_id!orders ------> website_session_id!website_pageviews
+       one         to           many          relation 
+
+(2)website_pageviews_id
+-values count is 1188124 and distinct value is 1188124 and unique values is 1188124 
+-zero errors zero empty
+
+
+final note
+- it helps to track the use path in website and find the problem 
+
+(3)created_at_date
+
+-values count is 1188124 and distinct value is 1096
+-zero errors zero empty
+
+
+Min	19/03/2012
+Max	19/03/2015
+
+date of session
+
+
+(4)created_at_time
+-values count is 1188124 and distinct value is 24
+-zero errors zero empty
+
+
+12	79678
+11	79307
+15	78446
+14	77257
+13	77199
+16	77130
+10	75373
+17	68276
+9	63620
+18	56656
+19	49379
+20	45613
+21	44392
+8	44222
+22	41484
+23	36411
+7	30643
+0	29796
+1	25304
+6	24958
+2	22139
+5	21576
+4	19839
+3	19426
+
+
+Average	12.95924752
+Standard deviation	5.74840245539551
+
+(5)pageview_url
+-values count is 1188124 and distinct value is 16
+-zero errors zero empty
+
+Products	261231
+The-Original-Mr-Fuzzy	162525
+Home	137576
+Lander-2	131170
+Cart	94953
+Lander-3	79000
+Lander-5	68166
+Shipping	64484
+Billing-2	48441
+Lander-1	47574
+Thank-You-For-Your-Order	32313
+The-Forever-Love-Bear	26033
+The-Birthday-Sugar-Panda	19046
+Lander-4	9385
+Billing	3617
+The-Hudson-River-Mini-Bear	2610
+
+
+
+______________________________________________________________________
+
+website_session data (query)
+
+(1)website_session_id
+-values count is 472871 and distinct value is 472871 and unique values is 472871  
+-zero errors zero empty
+
+(2)use_id
+
+-values count is 472871 and distinct value is 394318 and unique values is 343048
+-zero errors zero empty
+
+
+(3)is_repeat_session
+
+-values count is 472871 and distinct value is 2 
+-zero errors zero empty
+
+0	394318
+1	78553
+
+note: logical column
+
+(4)created_at_date
+-values count is 472871 and distinct value is 1096
+-zero errors zero empty
+
+Min	19/03/2012
+Max	19/03/2015
+
+
+(5)created_at_time
+-values count is 472871 and distinct value is 24
+-zero errors zero empty
+
+12	31783
+11	31603
+15	31205
+13	30755
+14	30714
+16	30701
+10	30553
+17	26819
+9	25791
+18	22288
+19	19435
+8	18094
+20	17962
+21	17607
+22	16330
+23	14296
+7	12439
+0	11755
+6	9985
+1	9875
+2	8652
+5	8638
+4	7889
+3	7702
+
+
+Average	12.93370285
+Standard deviation	5.73039233311448
+
+(6)utm_source
+-values count is 472871 and distinct value is 4
+-zero errors zero empty
+
+
+Gsearch	316035
+Null	83328
+Bsearch	62823
+Socialbook	10685
+
+(7)utm_compaign
+-values count is 472871 and distinct value is 5
+-zero errors zero empty
+
+
+Nonbrand	337615
+Null	83328
+Brand	41243
+Desktop_Targeted	5590
+Pilot	5095
+
+
+(8)utm_content
+-values count is 472871 and distinct value is 7
+-zero errors zero empty
+
+G_Ad_1	282706
+Null	83328
+B_Ad_1	54909
+G_Ad_2	33329
+B_Ad_2	7914
+Social_Ad_2	5590
+Social_Ad_1	5095
+
+
+(9)device_type
+-values count is 472871 and distinct value is 2
+-zero errors zero empty
+
+
+Desktop	327027
+Mobile	145844
+
+
+
+(10)http_referer
+
+-values count is 472871 and distinct value is 4
+-zero errors zero empty
+
+
+Https://Www.Gsearch.Com	351237
+Https://Www.Bsearch.Com	71032
+Null	39917
+Https://Www.Socialbook.Com	10685
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

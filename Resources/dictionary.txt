@@ -1,0 +1,235 @@
+### **Hypothesis 1 (Problem 1: Landing Page & Ad Alignment / Funnel)**
+
+* **Sessions 01 HomeAndLander Total** (Hypothesis 1, Problem 1: Baseline entry traffic volume across landing pages and home).
+* **Sessions 02 Products** (Hypothesis 1, Problem 1: Total sessions navigating to the product listing catalog).
+* **Sessions 03 ProductsDetails** (Hypothesis 1, Problem 1: Sessions advancing to individual product detail pages - PDP).
+* **Sessions 04 Cart** (Hypothesis 1, Problem 1: Sessions reaching the cart to measure initial purchase intent).
+* **Sessions 05 Shipping** (Hypothesis 1, Problem 1: Sessions progressing to the shipping information stage).
+* **Sessions 06 Billing** (Hypothesis 1, Problem 1: Sessions reaching the final payment and billing step).
+* **Sessions 07 ThankYourForYourOrder** (Hypothesis 1, Problem 1: Total completed orders reaching the confirmation page).
+* **Conv Home to Product** (Hypothesis 1, Problem 1: Step conversion rate evaluating top-of-funnel landing page relevance).
+* **Conv Products to ProductDetails** (Hypothesis 1, Problem 1: Progression rate from catalog browsing to specific product views).
+* **Conv ProductDetails to Cart** (Hypothesis 1, Problem 1: PDP-to-Cart conversion rate to measure core product interest).
+* **Conv Cart to Shipping** (Hypothesis 1, Problem 1: Cart-to-Shipping progression rate to detect cart abandonment friction).
+* **Conv Shipping to Billing** (Hypothesis 1, Problem 1: Progression efficiency across the shipping checkout step).
+* **Conv Billing to TYFYO** (Hypothesis 1, Problem 1: Payment completion rate to diagnose payment gateway drop-offs).
+* **Conv Home to Cart** (Hypothesis 1, Problem 1: Full pre-checkout conversion from initial entry to cart addition).
+* **Conversion Rate / Total convert rate from HomePage to TYFYO** (Hypothesis 1, Problem 1: End-to-end full-funnel conversion rate from entry to final purchase).
+
+### **Hypothesis 2 (Problem 1: Product Page Friction & Price Sensitivity)**
+
+* **Overall PDP to Cart Sessions (Product Specific)** (Hypothesis 2, Problem 1: Total cart additions isolated per individual product page).
+* **Total PDP Sessions (Product Specific)** (Hypothesis 2, Problem 1: Direct traffic volume captured by each individual product PDP).
+* **Overall PDP to Cart Rate (Product Specific)** (Hypothesis 2, Problem 1: PDP-to-Cart conversion rate per product to diagnose individual page friction and price sensitivity).
+
+### **Hypothesis 1 (Problem 2: Specific Product Defects & Quality)**
+
+* **Total items sold** (Hypothesis 1, Problem 2: Total sold volume used as the baseline for operational performance).
+* **Total items refunded** (Hypothesis 1, Problem 2: Total returned units to track customer dissatisfaction and return volume).
+* **Items refund rate** (Hypothesis 1, Problem 2: Defect/return percentage per item sold to evaluate product quality issues).
+
+### **Problem 3 (Macro Performance & Financial Health)**
+
+* **Total Sessions** (Problem 3: Comprehensive site-wide traffic volume).
+* **Gross Revenue** (Problem 3: Total top-line sales value before deducting costs and refunds).
+* **Net Profit** (Problem 3: Bottom-line profitability calculated after deducting COGS and total refund amounts).
+______________________________________________________________________________________________________________________________________________________________________________________
+
+                Funnel Diagnostics
+
+
+{OverAllConversionRateCard_}
+Measure: Conversion Rate 
+
+{HomePageDropOffRateCard_}
+Measure: 1 - [Conv_Home_to_Product] (Cell-Level Calculation)
+
+{CartDropOffRateCard_}
+Measure: 1 - [Conv_ProductDetails_to_Cart] (Cell-Level Calculation)
+
+{MidTierTrafficShareCard_}
+Measure: Mid_Tier_Traffic_Share
+
+{FunnelProgressionChart}
+Measure: Funnel_conv_rate
+
+{PricePointVsCRChart}
+Measure: Product Traffic Share %
+Measure: PDP_to_Cart_CR%
+
+{DeviceAndChannelConsistinsy}
+Measure: PDP_to_Cart_CR%
+
+                Refunds & Margin
+
+
+{StoreRefundBaselineCard_}
+Measure:Items_refund_rate
+
+{CrossSalesSafetyIndexCard_}
+Measure:AddOn_Refund_Rate 
+
+{MidTierReturnCard_}
+Measure:Mid_Tier_Return_Rate
+
+{No1RefundedProductCard_}
+Measure:No1_refunded_product
+
+{Product return volume & rate - pareto style Chart}
+Measure 1:Normal count of (order_item_refund_id)
+Measure 2:Product_Refund_Rate
+
+{Primary vs Add-on and return share chart}
+Measure1:Sales_Share 
+Measure2:Returns_Share
+
+
+{refund timeline day1 to day 15 chart}
+Measure:Timeline_refund_rate
+
+
+                Acquisition & ROI
+
+
+{STORE NET MARGIN}
+Measure:Store_Net_Margin_%
+
+{DESKTOP PROFIT DOMINANCE}
+Measure:DESKTOP PROFIT DOMINANCE
+
+
+{SYSTEMIC MOBILE GAP}
+Measure:
+
+
+{TOTAL AD SPEND EFFICIENCY}
+Measure:
+
+
+
+
+{}
+Measure:
+
+
+
+
+
+
+
+
+├── README.md                   <-- دراسة الحالة، الملخص التنفيذي، وأبرز النتائج
+├── docs/
+│   ├── data_dictionary.md      <-- التوثيق الفني للميجرات ومصادر البيانات
+│   └── etl_documentation.md    <-- تفاصيل معالجة Power Query
+└── assets/
+    └── images/
+        ├── dashboard_preview.png
+        └── star_schema_model.png
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

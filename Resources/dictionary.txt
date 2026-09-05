@@ -1,117 +1,295 @@
-### **Hypothesis 1 (Problem 1: Landing Page & Ad Alignment / Funnel)**
+================================================================================
+DATA DICTIONARY: HYPOTHESIS TESTING & DIAGNOSTIC MEASURES
+Project: Digital Funnel Leakage & Unit Economics Diagnostic
+Target Engine: Power Pivot / DAX (VertiPaq)
+================================================================================
 
-* **Sessions 01 HomeAndLander Total** (Hypothesis 1, Problem 1: Baseline entry traffic volume across landing pages and home).
-* **Sessions 02 Products** (Hypothesis 1, Problem 1: Total sessions navigating to the product listing catalog).
-* **Sessions 03 ProductsDetails** (Hypothesis 1, Problem 1: Sessions advancing to individual product detail pages - PDP).
-* **Sessions 04 Cart** (Hypothesis 1, Problem 1: Sessions reaching the cart to measure initial purchase intent).
-* **Sessions 05 Shipping** (Hypothesis 1, Problem 1: Sessions progressing to the shipping information stage).
-* **Sessions 06 Billing** (Hypothesis 1, Problem 1: Sessions reaching the final payment and billing step).
-* **Sessions 07 ThankYourForYourOrder** (Hypothesis 1, Problem 1: Total completed orders reaching the confirmation page).
-* **Conv Home to Product** (Hypothesis 1, Problem 1: Step conversion rate evaluating top-of-funnel landing page relevance).
-* **Conv Products to ProductDetails** (Hypothesis 1, Problem 1: Progression rate from catalog browsing to specific product views).
-* **Conv ProductDetails to Cart** (Hypothesis 1, Problem 1: PDP-to-Cart conversion rate to measure core product interest).
-* **Conv Cart to Shipping** (Hypothesis 1, Problem 1: Cart-to-Shipping progression rate to detect cart abandonment friction).
-* **Conv Shipping to Billing** (Hypothesis 1, Problem 1: Progression efficiency across the shipping checkout step).
-* **Conv Billing to TYFYO** (Hypothesis 1, Problem 1: Payment completion rate to diagnose payment gateway drop-offs).
-* **Conv Home to Cart** (Hypothesis 1, Problem 1: Full pre-checkout conversion from initial entry to cart addition).
-* **Conversion Rate / Total convert rate from HomePage to TYFYO** (Hypothesis 1, Problem 1: End-to-end full-funnel conversion rate from entry to final purchase).
+--------------------------------------------------------------------------------
+PROBLEM 1: FUNNEL PROGRESSION & PAGE-LEVEL DROP-OFF
+--------------------------------------------------------------------------------
 
-### **Hypothesis 2 (Problem 1: Product Page Friction & Price Sensitivity)**
+[Funnel Volumes - Step Tracking]
 
-* **Overall PDP to Cart Sessions (Product Specific)** (Hypothesis 2, Problem 1: Total cart additions isolated per individual product page).
-* **Total PDP Sessions (Product Specific)** (Hypothesis 2, Problem 1: Direct traffic volume captured by each individual product PDP).
-* **Overall PDP to Cart Rate (Product Specific)** (Hypothesis 2, Problem 1: PDP-to-Cart conversion rate per product to diagnose individual page friction and price sensitivity).
+- Measure Name: Funnel 1 - Entry Sessions
+  Baseline Value: 472,871[cite: 1]
+  Unit: Integer (Count)
+  Description: Total top-of-funnel entry traffic landing on either the homepage or direct landers[cite: 1]. Acts as the base denominator for sitewide conversion efficiency.
 
-### **Hypothesis 1 (Problem 2: Specific Product Defects & Quality)**
+- Measure Name: Funnel 2 - Products Page
+  Baseline Value: 261,231[cite: 1]
+  Unit: Integer (Count)
+  Description: Total sessions navigating to the central product listing catalog[cite: 1]. Evaluates landing page clarity and entry-level browsing motivation.
 
-* **Total items sold** (Hypothesis 1, Problem 2: Total sold volume used as the baseline for operational performance).
-* **Total items refunded** (Hypothesis 1, Problem 2: Total returned units to track customer dissatisfaction and return volume).
-* **Items refund rate** (Hypothesis 1, Problem 2: Defect/return percentage per item sold to evaluate product quality issues).
+- Measure Name: Funnel 3 - Product Details
+  Baseline Value: 210,214
+  Unit: Integer (Count)
+  Description: Total unique sessions reaching an individual Product Detail Page (PDP). Distinguishes general browsing from concrete product exploration.
 
-### **Problem 3 (Macro Performance & Financial Health)**
+- Measure Name: Funnel 4 - Cart
+  Baseline Value: 94,953[cite: 1]
+  Unit: Integer (Count)
+  Description: Total sessions advancing to the shopping cart[cite: 1]. Primary checkpoint for commercial intent prior to checkout initiation.
 
-* **Total Sessions** (Problem 3: Comprehensive site-wide traffic volume).
-* **Gross Revenue** (Problem 3: Total top-line sales value before deducting costs and refunds).
-* **Net Profit** (Problem 3: Bottom-line profitability calculated after deducting COGS and total refund amounts).
+- Measure Name: Funnel 5 - Shipping
+  Baseline Value: 64,484[cite: 1]
+  Unit: Integer (Count)
+  Description: Total sessions entering the shipping detail step[cite: 1]. Measures drop-off between cart addition and active checkout commitment.
+
+- Measure Name: Funnel 6 - Billing
+  Baseline Value: 52,058
+  Unit: Integer (Count)
+  Description: Total sessions passing shipping validation and loading the payment gateway. Diagnoses checkout friction caused by shipping costs or carrier rules.
+
+- Measure Name: Funnel 7 - Order Completed
+  Baseline Value: 32,313[cite: 1]
+  Unit: Integer (Count)
+  Description: Completed orders landing on the order confirmation screen[cite: 1]. Serves as the ground-truth transaction volume verified against backend database records[cite: 1].
+
+
+[Step Progression Rates - Micro Conversion]
+
+- Measure Name: CR - Entry to Products
+  Baseline Value: 55.24%
+  Unit: Percentage
+  Description: Progression rate from initial landing pages to the product catalog. Validates Hypothesis 1 by disproving ad-to-landing-page misalignment.
+
+- Measure Name: CR - Products to Details
+  Baseline Value: 80.47%
+  Unit: Percentage
+  Description: Progression rate from the catalog view to individual product pages. Confirms strong catalog engagement and layout navigation efficiency.
+
+- Measure Name: CR - Details to Cart
+  Baseline Value: 45.17%
+  Unit: Percentage
+  Description: Progression rate from PDP views to cart additions. Identifies the primary conversion bottleneck (~55% drop-off), validating the core product-page friction hypothesis.
+
+- Measure Name: CR - Cart to Shipping
+  Baseline Value: 67.91%
+  Unit: Percentage
+  Description: Progression rate from cart review into the shipping funnel. Quantifies cart abandonment and checkout-initiation friction.
+
+- Measure Name: CR - Shipping to Billing
+  Baseline Value: 80.73%
+  Unit: Percentage
+  Description: Progression rate across the shipping detail screen. Proves shipping address submission is not a major drop-off driver.
+
+- Measure Name: CR - Billing to Order
+  Baseline Value: 62.07%
+  Unit: Percentage
+  Description: Final payment gateway conversion rate. Measures friction related to available payment methods, form fields, and gateway validation errors.
+
+- Measure Name: CR - Entry to Cart
+  Baseline Value: 20.08%
+  Unit: Percentage
+  Description: Macro conversion rate covering the entire pre-checkout journey. Evaluates upstream UX independent of the payment pipeline.
+
+- Measure Name: Overall Store CR
+  Baseline Value: 6.83%[cite: 1]
+  Unit: Percentage
+  Description: End-to-end sitewide conversion rate (Orders / Sessions)[cite: 1]. Benchmark reference used to anchor executive KPI cards against market averages[cite: 1].
+
+
+--------------------------------------------------------------------------------
+PROBLEM 1: PRODUCT PAGE FRICTION & PRICE SENSITIVITY (HYPOTHESIS 2)
+--------------------------------------------------------------------------------
+
+[Cart Additions by Product SKU]
+
+- Measure Name: Cart Adds - Mr. Fuzzy
+  Baseline Value: 69,957
+  Unit: Integer (Count)
+  Description: Total sessions adding 'The Original Mr. Fuzzy' ($49.99) to cart[cite: 1]. Establishes baseline demand volume for the primary catalog driver.
+
+- Measure Name: Cart Adds - Sugar Panda
+  Baseline Value: 8,811
+  Unit: Integer (Count)
+  Description: Total sessions adding 'The Birthday Sugar Panda' ($45.99) to cart[cite: 1]. Evaluates cart-add elasticity for mid-tier price points.
+
+- Measure Name: Cart Adds - Love Bear
+  Baseline Value: 14,485
+  Unit: Integer (Count)
+  Description: Total sessions adding 'The Forever Love Bear' ($59.99) to cart[cite: 1]. Tests purchase intent for premium-tier offerings.
+
+- Measure Name: Cart Adds - Mini Bear
+  Baseline Value: 1,700
+  Unit: Integer (Count)
+  Description: Total sessions adding 'The Hudson River Mini Bear' ($29.99) to cart[cite: 1]. Measures impulse add-to-cart frequency for lower-priced products.
+
+
+[Product Detail Views by SKU]
+
+- Measure Name: Views - Mr. Fuzzy
+  Baseline Value: 162,525[cite: 1]
+  Unit: Integer (Count)
+  Description: Unique PDP views for 'The Original Mr. Fuzzy'[cite: 1]. Quantifies traffic concentration on the flagship hero item.
+
+- Measure Name: Views - Sugar Panda
+  Baseline Value: 19,046[cite: 1]
+  Unit: Integer (Count)
+  Description: Unique PDP views for 'The Birthday Sugar Panda'[cite: 1]. Baseline exposure volume for the $45.99 mid-tier product[cite: 1].
+
+- Measure Name: Views - Love Bear
+  Baseline Value: 26,033[cite: 1]
+  Unit: Integer (Count)
+  Description: Unique PDP views for 'The Forever Love Bear'[cite: 1]. Baseline exposure volume for the $59.99 premium product[cite: 1].
+
+- Measure Name: Views - Mini Bear
+  Baseline Value: 2,610[cite: 1]
+  Unit: Integer (Count)
+  Description: Unique PDP views for 'The Hudson River Mini Bear'[cite: 1]. Exposure volume for the entry-level catalog tier[cite: 1].
+
+
+[Product-Level Add-to-Cart Conversion Rates]
+
+- Measure Name: CR - Mr. Fuzzy
+  Baseline Value: 43.04%
+  Unit: Percentage
+  Description: Specific PDP-to-Cart conversion rate for 'Mr. Fuzzy'. Highlights significant intent drop-off within the $49.99 price tier despite high traffic volume[cite: 1].
+
+- Measure Name: CR - Sugar Panda
+  Baseline Value: 46.26%
+  Unit: Percentage
+  Description: Specific PDP-to-Cart conversion rate for 'Sugar Panda'. Corroborates the mid-tier conversion barrier ($45.99–$49.99 bracket)[cite: 1].
+
+- Measure Name: CR - Love Bear
+  Baseline Value: 55.64%
+  Unit: Percentage
+  Description: Specific PDP-to-Cart conversion rate for 'Love Bear' ($59.99)[cite: 1]. Disproves raw price resistance, proving higher price points convert well with sufficient value perception.
+
+- Measure Name: CR - Mini Bear
+  Baseline Value: 65.13%
+  Unit: Percentage
+  Description: Specific PDP-to-Cart conversion rate for 'Mini Bear' ($29.99)[cite: 1]. Demonstrates low price resistance at the lowest price tier.
+
+
+--------------------------------------------------------------------------------
+PROBLEM 2: POST-PURCHASE QUALITY & REFUND DIAGNOSTICS (HYPOTHESIS 1 & 2)
+--------------------------------------------------------------------------------
+
+- Measure Name: Total Units Sold
+  Baseline Value: 40,025[cite: 1]
+  Unit: Integer (Count)
+  Description: Gross operational volume of all physical units sold across primary and add-on transactions[cite: 1]. Baseline denominator for defect rate calculations.
+
+- Measure Name: Refunded Units
+  Baseline Value: 1,731[cite: 1]
+  Unit: Integer (Count)
+  Description: Total returned or refunded units recorded in post-purchase logs[cite: 1]. Tracks customer dissatisfaction and operational return volume.
+
+- Measure Name: Store Refund Rate
+  Baseline Value: 4.32%[cite: 1]
+  Unit: Percentage
+  Description: Overall store return rate (Refunded Units / Total Sold)[cite: 1]. Disproves a systemic or catalog-wide quality failure by falling well within healthy e-commerce benchmarks.
+
+- Measure Name: Add-On Refund Rate
+  Baseline Value: 2.52%[cite: 1]
+  Unit: Percentage
+  Description: Specific return percentage for secondary cross-sell items. Disproves the hypothesis that impulsive add-on purchases drive higher buyer remorse[cite: 1].
+
+
+--------------------------------------------------------------------------------
+PROBLEM 3: MACRO PERFORMANCE & FINANCIAL HEALTH
+--------------------------------------------------------------------------------
+
+- Measure Name: Total Sessions
+  Baseline Value: 472,871[cite: 1]
+  Unit: Integer (Count)
+  Description: Comprehensive unique traffic volume across the three-year dataset[cite: 1]. Serves as the master denominator for macro-level acquisition efficiency.
+
+- Measure Name: Gross Revenue
+  Baseline Value: $1,938,509.75
+  Unit: Currency (USD)
+  Description: Cumulative top-line sales value across 32,313 orders before deducting cost of goods sold (COGS), refunds, or marketing expenses[cite: 1].
+
+- Measure Name: Net Profit
+  Baseline Value: $1,130,800.81
+  Unit: Currency (USD)
+  Description: True gross operational profit calculated as Revenue minus COGS and customer refunds. Evaluates marketing efficiency and baseline unit economics.
+================================================================================
 ______________________________________________________________________________________________________________________________________________________________________________________
 
-                Funnel Diagnostics
+ :::::Funnel Diagnostics :::::
 
 
-{OverAllConversionRateCard_}
-Measure: Conversion Rate 
+{OverallStoreCR_Card}
+Measure: Overall Sore CR
 
-{HomePageDropOffRateCard_}
-Measure: 1 - [Conv_Home_to_Product] (Cell-Level Calculation)
+{HomePageDropOffRate_Card}
+Measure: 1 - [CR - Entry to Products] (Cell-Level Calculation)
 
-{CartDropOffRateCard_}
-Measure: 1 - [Conv_ProductDetails_to_Cart] (Cell-Level Calculation)
+{CartDropOffRate_Card}
+Measure: 1 - [CR - Details to Cart] (Cell-Level Calculation)
 
-{MidTierTrafficShareCard_}
-Measure: Mid_Tier_Traffic_Share
+{MidTierTrafficShare_Card}
+Measure: Mid-Tier Traffic Share
 
-{FunnelProgressionChart}
-Measure: Funnel_conv_rate
+{FunnelProgression_Chart}
+Measure: Funnel Progression Rate
 
-{PricePointVsCRChart}
+{Price Point vs CR_Chart}
 Measure: Product Traffic Share %
 Measure: PDP_to_Cart_CR%
 
-{DeviceAndChannelConsistinsy}
+{Device and channel consistinsy_Chart}
 Measure: PDP_to_Cart_CR%
 
-                Refunds & Margin
+ ::::: Refunds & Margin :::::
 
 
-{StoreRefundBaselineCard_}
-Measure:Items_refund_rate
+{StoreRefundBaseline_Card}
+Measure:Store Refund Rate
 
-{CrossSalesSafetyIndexCard_}
-Measure:AddOn_Refund_Rate 
+{CrossSalesSafetyIndex_Card}
+Measure:AddOn_Refund_Rate :2
 
-{MidTierReturnCard_}
+{MidTierReturn_Card}
 Measure:Mid_Tier_Return_Rate
 
-{No1RefundedProductCard_}
-Measure:No1_refunded_product
+{No1RefundedProduct_Card}
+Measure:Top Refunded SKU Share
 
 {Product return volume & rate - pareto style Chart}
-Measure 1:Normal count of (order_item_refund_id)
-Measure 2:Product_Refund_Rate
+Measure :Normal count of (order_item_refund_id)
+Measure :Product Refund Rate
 
 {Primary vs Add-on and return share chart}
-Measure1:Sales_Share 
-Measure2:Returns_Share
+Measure :Sales_Share 
+Measure :Returns_Share
 
 
 {refund timeline day1 to day 15 chart}
-Measure:Timeline_refund_rate
+Measure:Timeline Refund Rate
 
 
-                Acquisition & ROI
+ ::::: Acquisition & ROI :::::
 
 
 {STORE NET MARGIN}
-Measure:Store_Net_Margin_%
+Measure:Store Net Margin %
 
 {DESKTOP PROFIT DOMINANCE}
-Measure:DESKTOP PROFIT DOMINANCE
+Measure:Desktop Profit-Dominance
 
 
 {SYSTEMIC MOBILE GAP}
-Measure:
+Measure:Systemic Mobile-Gap
 
 
-{TOTAL AD SPEND EFFICIENCY}
-Measure:
+{End to End campaign profitability Matrix }
+Measure:Net_Profit:
+Measure:Total Refunds
+Measure:Total Cogs
 
 
+{Strategic rellocation Map (scale vs cut ) }
+Measure:Normal count of (website_sessions_id)
+Measure:Net_Profit
+Measure:Net_Margin_Pct
 
 
-{}
-Measure:
-
-
+{Strategic rellocation Map (scale vs cut ) }
+2 charts 
+Measure:Funnel Progression Rate
 
 
 

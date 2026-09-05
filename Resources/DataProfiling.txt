@@ -1,9 +1,34 @@
-__________________________________________________________________________________________
+================================================================================
+DATA PROFILING & EXPLORATORY AUDIT SPECIFICATION (EDA)
+Project: Digital Funnel Leakage & Unit Economics Diagnostic
+Status: Exploratory Phase | Preliminary Data Audit (Subject to Transformation)
+Target Model: Power Pivot Star Schema (VertiPaq Engine)
+================================================================================
+DISCLAIMER:
+All schema observations, data distribution metrics, and initial cardinality 
+mappings outlined herein reflect raw ingested states. Strategic business hypotheses 
+and metric logic derived from this document represent baseline exploratory findings 
+subject to formal validation in downstream transformation layers (Power Query / DAX).
+================================================================================
+
+Note : This data profiling is for the data before fixing and changing 
+or add any columns it is for understanding data 
+
+
+
+
+
+
+
+
+
+
+================================================================================
 orders data (query)
 
 (1) order_id <<<<<
 
--values count is 32313 and distinct value is 32313 there is no depliucated values 
+-values count is 32313 and distinct value is 32313 there is no duplicated values 
 -zero errors zero empty
 
 final notes
@@ -13,11 +38,11 @@ final notes
 
 (2) websites_session_id <<<<<
 
--values count is 32313 and distinct value is 32313 there is no depliucated values 
+-values count is 32313 and distinct value is 32313 there is no duplicated values 
 -zero errors zero empty
 
 final notes
--one to many relation with wesite pahe views and website sessions
+-one to many relation with website pageviews and website sessions
 -the volume of the orders 32k
 
 (3)user_id <<<<
@@ -454,7 +479,7 @@ Standard deviation	5.73039233311448
 (6)utm_source
 -values count is 472871 and distinct value is 4
 -zero errors zero empty
-
+-The “Null” replaced by “Direct search” 
 
 Gsearch	316035
 Null	83328
@@ -464,7 +489,7 @@ Socialbook	10685
 (7)utm_compaign
 -values count is 472871 and distinct value is 5
 -zero errors zero empty
-
+-The “Null” replaced by “Direct search”
 
 Nonbrand	337615
 Null	83328
